@@ -5,20 +5,20 @@
 class Jkl < Formula
   desc "JKL is a version manager for other command-line tools. It installs tools quickly with minimal input, and helps you switch versions of tools while you work."
   homepage "https://github.com/ivanfetch/jkl"
-  version "0.0.6"
+  version "0.0.7"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.6/jkl_0.0.6_darwin_arm64.tar.gz"
-      sha256 "9ba630d3a7c97bb4ff1a972d1a745e71d77af555ad7a1a53969c491e19c26de6"
+    if Hardware::CPU.intel?
+      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.7/jkl_0.0.7_darwin_amd64.tar.gz"
+      sha256 "e5223adc571caba09f8f277d31ec165f49f6609bf9cb45b1ae642603f0fbc4c9"
 
       def install
         bin.install "jkl"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.6/jkl_0.0.6_darwin_amd64.tar.gz"
-      sha256 "16ee612b333a53de126d50555e280892453f6d6090e1f1dc0ba3237541053249"
+    if Hardware::CPU.arm?
+      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.7/jkl_0.0.7_darwin_arm64.tar.gz"
+      sha256 "2428d30791b5835db5a4b8c0fa0ea0ccef4d615f043f139f631be20654a79774"
 
       def install
         bin.install "jkl"
@@ -27,25 +27,25 @@ class Jkl < Formula
   end
 
   on_linux do
+    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.7/jkl_0.0.7_linux_armv6.tar.gz"
+      sha256 "a2d69f0c62ef6913fa59522992b369878be5ba1f6189143f839e412652e8c327"
+
+      def install
+        bin.install "jkl"
+      end
+    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.6/jkl_0.0.6_linux_arm64.tar.gz"
-      sha256 "db4ea18e2f80a9ab7844c84615c2d0e9efb8c05d73153b18853a0691ea41039f"
+      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.7/jkl_0.0.7_linux_arm64.tar.gz"
+      sha256 "b930ca43cc6777883cbfce23664a832ff4b88070bdb4e52e1d2ba1151c4edda6"
 
       def install
         bin.install "jkl"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.6/jkl_0.0.6_linux_amd64.tar.gz"
-      sha256 "ee6899628e6169e2754c00540955e384cd91ee6a976c4937dcd1bb1865027614"
-
-      def install
-        bin.install "jkl"
-      end
-    end
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.6/jkl_0.0.6_linux_armv6.tar.gz"
-      sha256 "3f1c52c8276caf21d741f8788e096c5d178e36deb49083d55073b41d8635d2f7"
+      url "https://github.com/ivanfetch/jkl/releases/download/v0.0.7/jkl_0.0.7_linux_amd64.tar.gz"
+      sha256 "f99b8b84b4c5bbf342c122be8bb6257af0adc45432d6125a144d6d50cbc39ed5"
 
       def install
         bin.install "jkl"
